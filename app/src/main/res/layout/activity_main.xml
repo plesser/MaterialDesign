@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_plusminus"
         app:layout_constraintTop_toBottomOf="@+id/textview_display" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_plusminus"
         android:layout_width="64dp"
         android:layout_height="48dp"
@@ -45,7 +45,9 @@
         android:text="\u00B1"
         app:layout_constraintEnd_toStartOf="@id/button_percent"
         app:layout_constraintStart_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/textview_display" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_display"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:cornerRadius="12dp"/>
 
     <Button
         android:id="@+id/button_percent"
@@ -79,7 +81,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_div"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/view"/>
 
     <Button
         android:id="@+id/button_div"
