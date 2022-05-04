@@ -1,5 +1,6 @@
 package ru.plesser.materialdesign;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,9 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private final static String TAG = "MainActivity";
+    private final static String DATA = "Calculator";
 
     TextView displayTextview;
 
@@ -40,59 +41,67 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button minusButton;
     Button dotButton;
 
+    Calculator calculator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        displayTextview = findViewById(R.id.display_textview);
+        if (savedInstanceState == null){
+            calculator = new Calculator();
+        } else {
+            calculator = (Calculator) savedInstanceState.getSerializable("DATA");
+        }
 
-        zeroButton = findViewById(R.id.zero_button);
+        displayTextview = findViewById(R.id.textview_display);
+
+        zeroButton = findViewById(R.id.button_zero);
         zeroButton.setOnClickListener(this);
 
-        oneButton = findViewById(R.id.one_button);
+        oneButton = findViewById(R.id.button_one);
         oneButton.setOnClickListener(this);
-        twoButton = findViewById(R.id.two_button);
+        twoButton = findViewById(R.id.button_two);
         twoButton.setOnClickListener(this);
-        threeButton = findViewById(R.id.three_button);
+        threeButton = findViewById(R.id.button_three);
         threeButton.setOnClickListener(this);
 
-        fourButton = findViewById(R.id.four_button);
+        fourButton = findViewById(R.id.button_four);
         fourButton.setOnClickListener(this);
-        fiveButton = findViewById(R.id.five_button);
+        fiveButton = findViewById(R.id.button_five);
         fiveButton.setOnClickListener(this);
-        sixButton = findViewById(R.id.six_button);
+        sixButton = findViewById(R.id.button_six);
         sixButton.setOnClickListener(this);
 
-        sevenButton = findViewById(R.id.seven_button);
+        sevenButton = findViewById(R.id.button_seven);
         sevenButton.setOnClickListener(this);
-        eightButton = findViewById(R.id.eight_button);
+        eightButton = findViewById(R.id.button_eight);
         eightButton.setOnClickListener(this);
-        nineButton = findViewById(R.id.nine_button);
+        nineButton = findViewById(R.id.button_nine);
         nineButton.setOnClickListener(this);
 
-        clearButton = findViewById(R.id.clear_button);
+        clearButton = findViewById(R.id.button_clear);
         clearButton.setOnClickListener(this);
-        plusminusButton = findViewById(R.id.plusminus_button);
+        plusminusButton = findViewById(R.id.button_plusminus);
         plusminusButton.setOnClickListener(this);
-        percentButton = findViewById(R.id.percent_button);
+        percentButton = findViewById(R.id.button_percent);
         percentButton.setOnClickListener(this);
-        backspaceButton = findViewById(R.id.backspace_button);
+        backspaceButton = findViewById(R.id.button_backspace);
         backspaceButton.setOnClickListener(this);
-        equalButton = findViewById(R.id.equal_button);
+        equalButton = findViewById(R.id.button_equal);
         equalButton.setOnClickListener(this);
 
-        multiButton = findViewById(R.id.multi_button);
+        multiButton = findViewById(R.id.button_multi);
         multiButton.setOnClickListener(this);
-        plusButton = findViewById(R.id.plus_button);
+        plusButton = findViewById(R.id.button_plus);
         plusButton.setOnClickListener(this);
-        divButton = findViewById(R.id.div_button);
+        divButton = findViewById(R.id.button_div);
         divButton.setOnClickListener(this);
 
-        minusButton = findViewById(R.id.minus_button);
+        minusButton = findViewById(R.id.button_minus);
         minusButton.setOnClickListener(this);
 
-        dotButton = findViewById(R.id.dot_button);
+        dotButton = findViewById(R.id.button_dot);
         dotButton.setOnClickListener(this);
 
         displayTextview.setText("0");
@@ -101,74 +110,76 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case (R.id.zero_button):
+            case (R.id.button_zero):
                 Log.d(TAG, "key 0");
                 break;
-            case (R.id.one_button):
+            case (R.id.button_one):
                 Log.d(TAG, "key 1");
                 addNumber(1);
                 break;
-            case (R.id.two_button):
+            case (R.id.button_two):
                 Log.d(TAG, "key 2");
                 addNumber(2);
                 break;
-            case (R.id.three_button):
+            case (R.id.button_three):
                 Log.d(TAG, "key 3");
                 addNumber(3);
                 break;
-            case (R.id.four_button):
+            case (R.id.button_four):
                 Log.d(TAG, "key 4");
                 addNumber(4);
                 break;
-            case (R.id.five_button):
+            case (R.id.button_five):
                 Log.d(TAG, "key 5");
                 addNumber(5);
                 break;
-            case (R.id.six_button):
+            case (R.id.button_six):
                 Log.d(TAG, "key 6");
                 addNumber(6);
                 break;
-            case (R.id.seven_button):
+            case (R.id.button_seven):
                 Log.d(TAG, "key 7");
                 addNumber(7);
                 break;
-            case (R.id.eight_button):
+            case (R.id.button_eight):
                 Log.d(TAG, "key 8");
                 addNumber(8);
                 break;
-            case (R.id.nine_button):
+            case (R.id.button_nine):
                 Log.d(TAG, "key 9");
                 addNumber(9);
                 break;
-            case (R.id.plus_button):
+            case (R.id.button_plus):
                 Log.d(TAG, "key +");
                 break;
-            case (R.id.minus_button):
+            case (R.id.button_minus):
                 Log.d(TAG, "key -");
                 break;
-            case (R.id.multi_button):
+            case (R.id.button_multi):
                 Log.d(TAG, "key *");
                 break;
-            case (R.id.div_button):
+            case (R.id.button_div):
                 Log.d(TAG, "key /");
                 break;
-            case (R.id.dot_button):
+            case (R.id.button_dot):
                 Log.d(TAG, "key .");
+                addOperator("dot");
                 break;
-            case (R.id.clear_button):
+            case (R.id.button_clear):
                 Log.d(TAG, "key C");
+                addOperator("clear");
                 break;
-            case (R.id.plusminus_button):
+            case (R.id.button_plusminus):
                 Log.d(TAG, "key +/-");
                 addOperator("+/-");
                 break;
-            case (R.id.percent_button):
+            case (R.id.button_percent):
                 Log.d(TAG, "key %");
                 break;
-            case (R.id.backspace_button):
+            case (R.id.button_backspace):
                 Log.d(TAG, "key <-");
                 break;
-            case (R.id.equal_button):
+            case (R.id.button_equal):
                 Log.d(TAG, "key =");
                 break;
             default:
@@ -177,17 +188,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void addOperator(String operator) {
+        Log.d(TAG, "operator is <" + operator + ">");
+
         String display = displayTextview.getText().toString();
-        if ("0".equals(display)){
+
+        if ("0".equals(display) && !"dot".equals(operator)){
+            Log.d(TAG, "display is 0, return");
             return;
-        }
-        if ("+/-".equals(operator)){
+        } else if ("+/-".equals(operator)){
+            Log.d(TAG, "operator +/-");
             String sign = String.valueOf(display.charAt(0));
             if ("-".equals(sign)){
                 displayTextview.setText(display.substring(1, display.length()));
             } else {
                 displayTextview.setText("-"+display);
             }
+        } else if ("dot".equals(operator) && display.indexOf(".") == -1){
+            Log.d(TAG, display+"." + " ");
+
+            displayTextview.setText(display+".");
+        } else if ("clear".equals(operator)){
+            Log.d(TAG, "operator is " + operator );
+            displayTextview.setText("0");
         }
     }
 
@@ -198,5 +220,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             displayTextview.setText(display + number);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(DATA, calculator);
     }
 }
