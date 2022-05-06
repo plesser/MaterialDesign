@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
+    android:background="@drawable/background_main_night"
     tools:context=".MainActivity">
 
     <TextView
@@ -35,7 +35,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.45"/>
 
-    
+
     <Button
         android:id="@+id/button_clear"
         android:text="@string/clear"
@@ -45,7 +45,7 @@
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -56,7 +56,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_clear"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -67,7 +67,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_plusminus"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -78,7 +78,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_percent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -89,7 +89,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_backspace"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
 
@@ -103,7 +103,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/button_clear"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -113,7 +113,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_nine"
         app:layout_constraintStart_toEndOf="@+id/button_seven"
         app:layout_constraintTop_toBottomOf="@+id/button_plusminus"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -123,7 +123,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_multi"
         app:layout_constraintStart_toEndOf="@+id/button_eight"
         app:layout_constraintTop_toBottomOf="@+id/button_percent"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -133,7 +133,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_plus"
         app:layout_constraintStart_toEndOf="@+id/button_nine"
         app:layout_constraintTop_toBottomOf="@+id/button_backspace"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -143,7 +143,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_multi"
         app:layout_constraintTop_toBottomOf="@+id/button_equal"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
 
@@ -156,7 +156,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/button_seven"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -166,7 +166,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_six"
         app:layout_constraintStart_toEndOf="@+id/button_four"
         app:layout_constraintTop_toBottomOf="@+id/button_eight"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -176,7 +176,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_div"
         app:layout_constraintStart_toEndOf="@+id/button_five"
         app:layout_constraintTop_toBottomOf="@+id/button_nine"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
 
@@ -187,7 +187,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_minus"
         app:layout_constraintStart_toEndOf="@+id/button_six"
         app:layout_constraintTop_toBottomOf="@+id/button_multi"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
 
@@ -198,7 +198,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_div"
         app:layout_constraintTop_toBottomOf="@+id/button_plus"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
 
@@ -212,7 +212,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/button_four"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -222,7 +222,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_three"
         app:layout_constraintStart_toEndOf="@+id/button_one"
         app:layout_constraintTop_toBottomOf="@+id/button_five"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -232,7 +232,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_dot"
         app:layout_constraintStart_toEndOf="@+id/button_two"
         app:layout_constraintTop_toBottomOf="@+id/button_six"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -242,7 +242,7 @@
         app:layout_constraintEnd_toStartOf="@id/button_zero"
         app:layout_constraintStart_toEndOf="@+id/button_three"
         app:layout_constraintTop_toBottomOf="@+id/button_div"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
     <Button
@@ -252,7 +252,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/button_dot"
         app:layout_constraintTop_toBottomOf="@+id/button_minus"
-        style="@style/HalfButton2"
+        style="@style/HalfButton2Night"
         app:cornerRadius="12dp" />
 
 
