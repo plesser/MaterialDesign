@@ -20,4 +20,10 @@
     <string name="equal">=</string>
     <string name="zero">0</string>
     <string name="dot">.</string>
+    <string name="choice_style">Выберите стиль для отображения</string>
+    <string name="day_mode">Дневная тема</string>
+    <string name="night_mode">Ночная тема</string>
+    <string name="run_calculator">Запуск калькулятора</string>
+    <string name="choice_calculator">Выбор темы для калькулятора</string>
+    <string name="run_calculator_intent">Запуск калькулятора через интент</string>
 </resources>

@@ -2,7 +2,10 @@ package ru.plesser.materialdesign;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +14,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private final static String TAG = "MainActivity";
-    private final static String DATA = "Calculator";
+    static final String DATA = "data";
+    static final String MODE = "mode";
+
 
     TextView displayTextview;
 
@@ -43,10 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Calculator calculator;
 
+    String mode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mode = getIntent().getStringExtra(MODE);
+        Log.d(TAG, "mode is " + mode);
+
 
         if (savedInstanceState == null){
             calculator = new Calculator();
@@ -105,13 +116,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dotButton.setOnClickListener(this);
 
         displayTextview.setText("0");
+
     }
+
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case (R.id.button_zero):
                 Log.d(TAG, "key 0");
+                addNumber(0);
                 break;
             case (R.id.button_one):
                 Log.d(TAG, "key 1");
@@ -151,15 +165,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case (R.id.button_plus):
                 Log.d(TAG, "key +");
+                addOperator("+");
                 break;
             case (R.id.button_minus):
                 Log.d(TAG, "key -");
+                addOperator("-");
                 break;
             case (R.id.button_multi):
                 Log.d(TAG, "key *");
+                addOperator("-");
                 break;
             case (R.id.button_div):
                 Log.d(TAG, "key /");
+                addOperator("/");
                 break;
             case (R.id.button_dot):
                 Log.d(TAG, "key .");
@@ -175,15 +193,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case (R.id.button_percent):
                 Log.d(TAG, "key %");
+                addOperator("%");
                 break;
             case (R.id.button_backspace):
                 Log.d(TAG, "key <-");
+                addOperator("backspace");
                 break;
             case (R.id.button_equal):
                 Log.d(TAG, "key =");
+                calculate();
                 break;
             default:
                 Log.d(TAG, "WTF");
+        }
+    }
+
+    private void calculate() {
+        String operator = calculator.getOperator();
+        String display = displayTextview.getText().toString();
+        float result = -11111111111.0f;
+        String resultDisplay;
+
+        if ("+-*/%".indexOf(operator) >= 0) {
+            float numberOne = calculator.getNumberOne();
+            float numberTwo = Float.valueOf(display);
+            calculator.setNumberTwo(numberTwo);
+            switch (operator) {
+                case "+":
+                    result = numberOne + numberTwo;
+                    break;
+                case "-":
+                    result = numberOne - numberTwo;
+                    break;
+                case "*":
+                    result = numberOne * numberTwo;
+                    break;
+                case "/":
+                    if (numberTwo == 0){
+                        result = 99999999999999999.0f;
+                    } else {
+                        result = numberOne / numberTwo;
+                    }
+                    break;
+                case "%":
+                    result = numberOne * 100 / numberTwo;
+                    break;
+            }
+
+            resultDisplay = "" + result;
+
+            if (result == Math.round(result)){
+                Log.d(TAG, resultDisplay + " " + resultDisplay.indexOf("."));
+                resultDisplay = resultDisplay.substring(0, resultDisplay.indexOf("."));
+            }
+
+            displayTextview.setText(resultDisplay);
+            calculator.setIsNewNumber(true);
+            calculator.setNumberOne(result);
         }
     }
 
@@ -210,11 +276,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if ("clear".equals(operator)){
             Log.d(TAG, "operator is " + operator );
             displayTextview.setText("0");
+            calculator.setNumberOne(0);
+            calculator.setNumberTwo(0);
+            calculator.setIsNewNumber(false);
+        } else if ("+-*/%".indexOf(operator) != -1){
+            Log.d(TAG, "arithmetic operation " + operator);
+            calculator.setOperator(operator);
+            if (calculator.getNumberOne() == 0) {
+                calculator.setNumberOne(Float.valueOf(display));
+            } else {
+
+            }
+            calculator.setIsNewNumber(true);
+            Log.d(TAG, "number one is " + calculator.getNumberOne());
+
+        } else if ("backspace".equals(operator)){
+            display = display.substring(0, display.length()-1);
+            if ("".equals(display)){
+                display = "0";
+            }
+
+            displayTextview.setText(display);
         }
     }
 
     private void addNumber(int number) {
-        String display = displayTextview.getText().toString();
+        String display;
+        if (calculator.isNewNumber){
+            display = "";
+            calculator.setIsNewNumber(false);
+        } else {
+            display = displayTextview.getText().toString();
+        }
         if ("0".equals(display)){
             displayTextview.setText(""+number);
         } else {
@@ -225,6 +318,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState(Bundle) call");
         outState.putSerializable(DATA, calculator);
+    }
+
+    public static Intent newInstance(Context context, String mode) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MODE, mode);
+        return intent;
     }
 }

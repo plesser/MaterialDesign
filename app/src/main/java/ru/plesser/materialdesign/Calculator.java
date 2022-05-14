@@ -10,6 +10,8 @@ public class Calculator implements Serializable {
 
     String operator = "empty";
 
+    Boolean isNewNumber = false;
+
     public Calculator() {
 
     }
@@ -44,5 +46,13 @@ public class Calculator implements Serializable {
 
     public void setOperator(String operator) {
         this.operator = operator;
+    }
+
+    public Boolean getIsNewNumber() {
+        return isNewNumber;
+    }
+
+    public void setIsNewNumber(Boolean isNewNumber) {
+        this.isNewNumber = isNewNumber;
     }
 }
